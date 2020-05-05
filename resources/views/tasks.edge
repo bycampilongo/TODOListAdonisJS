@@ -1,0 +1,16 @@
+@layout('app')
+
+@section('content')
+
+    <h1>{{title}}</h1>
+    @if(old('notification'))
+        <div class="alert alert-success">
+            {{ old('notification')}}
+        </div>
+    @endif
+    <ul class="list-group">
+        @each(item in tasks)
+    <li class="list-group-item"><a href="/task/{{item.id}}">{{item.title}}</a></li>  
+        @endeach
+    </ul>
+@endsection

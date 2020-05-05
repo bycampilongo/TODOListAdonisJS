@@ -1,0 +1,19 @@
+@layout('app')
+
+@section('content')
+  <h1 class="mb-4">New Task</h1>
+<form action="{{ route('/tasks/add') }}" method="post">
+    {{ csrfField() }}
+    <label for="">Title</label>
+    <input type="text" class="form-control {{ hasErrorFor('title') ? 'is-invalid': ''}}" 
+    name="title" placeholder="Your Title Task">
+    {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('title'), hasErrorFor('title'))}}
+    <label class="mt-4" for="">Body</label>
+    <textarea name="body" id="" 
+        class="form-control {{ hasErrorFor('bodys') ? 'is-invalid': ''}}" 
+        placeholder="Body"
+    ></textarea>
+    {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('body'), hasErrorFor('body'))}}
+    <button class="btn btn-primary mt-4" type="submit">Save</button>
+</form>
+@endsection

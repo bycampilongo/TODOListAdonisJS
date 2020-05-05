@@ -1,0 +1,21 @@
+@layout('app')
+
+@section('content')
+
+<div class="row">
+    <h1>{{task.title}}</h1>
+    <div class="col-md-12 d-flex" style="border: 1px solid #ccc; border-radius: 10px; min-height: 300px;">
+        <div class="col-md-8">
+            <span>Body</span>
+            <p class="mt-3 mb-4">{{ task.body }}</p>
+        </div>
+        <div class="col-md-4 mt-4">
+            <a href="/task/edit/{{ task.id }}" class="btn btn-warning"  style="margin-right: 10px; display: inline-block; text-align: center">Edit</a>
+            <a href="/task/delete/{{ task.id }}" class="btn btn-danger"   style="margin-right: 10px">Delete</a>
+        </div>
+    </div>
+</div>
+
+<a href="/tasks" class="btn btn-primary mt-4">Go Back</a>
+  
+@endsection

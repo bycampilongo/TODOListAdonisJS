@@ -1,0 +1,22 @@
+@layout('app')
+
+@section('content')
+<h1 class="mb-4">Edit {{ task.title }}</h1>
+<form action="{{ route('/task/update') }}" method="post">
+    {{ csrfField() }}
+    {{--  id  --}}
+    <input type="hidden" name="id" value="{{ task.id }}">
+    <label for="">Title</label>
+    <input type="text" class="form-control {{ hasErrorFor('title') ? 'is-invalid': ''}}" 
+name="title" placeholder="Your Title Task" value="{{ task.title }}">
+    {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('title'), hasErrorFor('title'))}}
+    <label class="mt-4" for="">Body</label>
+    <textarea name="body" id="" 
+        class="form-control {{ hasErrorFor('bodys') ? 'is-invalid': ''}}" 
+        placeholder="Body"
+    >{{ task.body }}</textarea>
+    {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('body'), hasErrorFor('body'))}}
+    <button class="btn btn-success mt-4" type="submit">Save</button>
+    <a href="/task/{{task.id}}" class="btn btn-primary mt-4" style="margin-left: 10px">Go Back</a>
+</form>
+@endsection
